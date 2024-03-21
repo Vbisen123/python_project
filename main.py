@@ -4,6 +4,10 @@ import base64
 import os
 import requests
 import threading
+from dotenv import load_dotenv
+
+
+load_dotenv()
 
 
 # Important (.......Download the cv2 )
@@ -25,8 +29,10 @@ save_images_folder = 'images' # change the Folder Path
 os.makedirs(save_images_folder, exist_ok=True)  # Create the folder if it doesn't exist
 
 # API URL and Authentication Token
-api_image_url = "http://localhost:7200/image-url" # Change the Localhost into IP address(only for raspberry pi)
-api_save_url = "http://localhost:7200/images"
+# api_image_url = "http://localhost:7200/image-url" # Change the Localhost into IP address(only for raspberry pi)
+# api_save_url = "http://localhost:7200/images"
+api_image_url =os.getenv("IMAGE_URL")
+api_save_url =os.getenv("UPLOAD_IMAGE_URL")
 
 
 # Function to process images and print API responses
